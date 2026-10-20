@@ -1,0 +1,21 @@
+{
+  "name": "piece-bag",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "マッチ3 × デッキ構築ローグ（仮題：ピースバッグ）",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "sim": "tsx scripts/sim.ts"
+  },
+  "dependencies": {
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.0.0"
+  }
+}

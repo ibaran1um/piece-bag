@@ -1,0 +1,90 @@
+:root {
+  --bg: #14121c;
+  --panel: #1f1b2b;
+  --line: #342e45;
+  --text: #f4efe6;
+  --sub: #a59fb5;
+  --font: "M PLUS Rounded 1c", "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Maru Gothic ProN", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", Meiryo, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: none;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  height: 100vh;
+  height: 100dvh;
+}
+
+#game {
+  height: 100%;
+  width: min(100vw, calc(100dvh * 9 / 16));
+  flex: 0 0 auto;
+}
+
+#game canvas { display: block; }
+
+.side {
+  display: none;
+  width: 260px;
+  padding: 24px 4px;
+  overflow-y: auto;
+}
+
+.side h2 {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--sub);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  margin: 0 0 12px;
+}
+.side h2:not(:first-child) { margin-top: 24px; }
+
+.hint { color: var(--sub); font-size: 13px; line-height: 1.7; padding-left: 0; list-style: none; }
+
+#bag-list .row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 14px;
+}
+#bag-list .chip { width: 24px; height: 24px; border-radius: 6px; }
+#bag-list .desc { grid-column: 2 / 4; color: var(--sub); font-size: 12px; }
+#bag-list .num { font-weight: 800; }
+
+#log {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.6;
+  max-height: 52vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+#log li { padding: 2px 0; border-bottom: 1px dotted var(--line); color: #d9d3e3; }
+
+@media (min-width: 1000px) and (min-height: 600px) {
+  .side { display: block; }
+}

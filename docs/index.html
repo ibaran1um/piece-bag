@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#14121c" />
+    <title>ピースバッグ（仮）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="./assets/index-BA5kJF_I.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DIoGfrxm.css">
+  </head>
+  <body>
+    <div id="app">
+      <aside id="side-left" class="side">
+        <h2>袋の中身</h2>
+        <div id="bag-list"></div>
+        <p class="hint">袋からピースが補充されます。<br />枚数が少ない種類ほど揃いにくく、<br />袋を絞るほど狙った種類が揃いやすくなります。</p>
+      </aside>
+      <main id="game"></main>
+      <aside id="side-right" class="side">
+        <h2>ログ</h2>
+        <ol id="log"></ol>
+        <h2>操作</h2>
+        <ul class="hint">
+          <li>ドラッグ：隣のピースと入れ替え</li>
+          <li>クリック2回：選んで入れ替え</li>
+          <li>長押し：ピース・敵の説明</li>
+        </ul>
+      </aside>
+    </div>
+    <script>
+      // ビルド前のソースをそのまま配信しているなど、ゲームが起動しなかったときの案内
+      setTimeout(function () {
+        if (window.__game) return;
+        var el = document.getElementById('game');
+        if (!el) return;
+        el.innerHTML =
+          '<div style="padding:32px 20px;line-height:1.8;font-size:15px;color:#f4efe6">' +
+          '<b>ゲームを起動できませんでした。</b><br>' +
+          'GitHub Pages で表示している場合は、ビルド前のファイルが配信されている可能性があります。<br>' +
+          '・Settings → Pages の Source を「GitHub Actions」にする<br>' +
+          '・または「Deploy from a branch」で フォルダを <code>/docs</code> にする' +
+          '</div>';
+      }, 6000);
+    </script>
+  </body>
+</html>

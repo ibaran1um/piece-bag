@@ -1,12 +1,13 @@
 {
   "name": "piece-bag",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "マッチ3 × デッキ構築ローグ（仮題：ピースバッグ）",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "build:docs": "tsc --noEmit && vite build --outDir docs --emptyOutDir && node -e \"require('fs').writeFileSync('docs/.nojekyll','')\"",
     "preview": "vite preview",
     "sim": "tsx scripts/sim.ts"
   },

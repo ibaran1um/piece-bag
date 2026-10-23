@@ -30,5 +30,20 @@
       </aside>
     </div>
     <script type="module" src="./src/main.ts"></script>
+    <script>
+      // ビルド前のソースをそのまま配信しているなど、ゲームが起動しなかったときの案内
+      setTimeout(function () {
+        if (window.__game) return;
+        var el = document.getElementById('game');
+        if (!el) return;
+        el.innerHTML =
+          '<div style="padding:32px 20px;line-height:1.8;font-size:15px;color:#f4efe6">' +
+          '<b>ゲームを起動できませんでした。</b><br>' +
+          'GitHub Pages で表示している場合は、ビルド前のファイルが配信されている可能性があります。<br>' +
+          '・Settings → Pages の Source を「GitHub Actions」にする<br>' +
+          '・または「Deploy from a branch」で フォルダを <code>/docs</code> にする' +
+          '</div>';
+      }, 6000);
+    </script>
   </body>
 </html>

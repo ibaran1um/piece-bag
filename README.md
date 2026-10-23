@@ -8,66 +8,6 @@
 - 1 手ごとに敵の予告が進み、0 になると行動。石化・凍結・呪いなどで盤面を邪魔してくる
 - 全 3 層（各層：戦闘 → 戦闘 → 野営地 → 戦闘 → ボス）
 
-## 動かし方
-
-```bash
-npm install
-npm run dev       # 開発サーバー（http://localhost:5173）
-npm run build     # dist/ に出力
-npm run preview   # ビルド結果の確認
-npm run sim -- 500  # バランス確認（貪欲AIで 500 ラン）
-```
-
-### URL パラメータ
-
-| パラメータ | 内容 |
-| --- | --- |
-| `?seed=12345` | シード固定。同じシード・同じ選択なら同じ展開になる |
-| `?renderer=canvas` | Canvas 描画に切り替え（古い端末向け・検証用） |
-
-## GitHub Pages への公開
-
-`index.html` と `src/` はビルド前のソースなので、**そのまま配信するとゲームが表示されません**
-（ブラウザは TypeScript を直接実行できないため）。次のどちらかで公開します。
-
-### 方法A：ビルド済みの `docs/` を公開（手軽）
-
-1. `npm run build:docs`（`docs/` にビルド結果が出る。同梱済み）
-2. `docs/` ごと push
-3. **Settings → Pages → Source** を **Deploy from a branch**、ブランチ `main`、フォルダ **`/docs`**
-
-コードを変えたら `npm run build:docs` してから push し直します。
-
-### 方法B：GitHub Actions で自動ビルド
-
-1. `.github/workflows/deploy.yml` も含めて push（Finder や Web アップロードでは隠しフォルダが漏れやすいので注意）
-2. **Settings → Pages → Source** を **GitHub Actions**
-3. 以後 `main` に push するたびに自動でビルド・公開
-
-`vite.config.ts` の `base: './'` で相対パス出力にしているので、リポジトリ名に合わせた設定は不要です。
-
-## 構成
-
-```
-src/
-  core/            ゲームロジック（Phaser に依存しない純粋な TS）
-    rng.ts         シード付き乱数
-    pieces.ts      ピースの種類と効果
-    board.ts       盤面・マッチ判定・落下
-    enemies.ts     敵 18 体の定義とバランス倍率（BALANCE）
-    battle.ts      戦闘処理。1手ごとに「フレーム」の列を返す
-    run.ts         ラン全体（袋・報酬・ショップ・階層）
-    ai.ts          1手先読みの貪欲AI（シミュレーター用）
-  game/            表示（Phaser 3）
-    scenes/        Title / Map / Battle / Reward / Shop / Result
-    textures.ts    ピース・敵の絵をコードで生成（仮素材）
-    bridge.ts      PC 用の左右パネル（HTML）と記録の保存
-scripts/sim.ts     バランス用シミュレーター
-```
-
-ロジックは `Battle.trySwap()` が「消える → 効果 → 落下 → 連鎖 → 敵ターン」をすべて計算し、
-画面側はそのフレーム列を順に再生するだけです。描画を差し替えてもロジックはそのまま使えます。
-
 ## 敵一覧
 
 | 層 | 敵 | 特徴 |
@@ -82,3 +22,4 @@ scripts/sim.ts     バランス用シミュレーター
 ## 記録
 
 ベスト記録はブラウザの `localStorage` に保存（サーバーなし）。ブラウザを変えると引き継がれません。
+MIT © 2026 いばらにうむ

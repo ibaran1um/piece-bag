@@ -66,7 +66,7 @@ export class TitleScene extends Phaser.Scene {
         ? 'まだ記録はありません'
         : `最高到達：${b.bestFloor > 3 ? '踏破' : `第${b.bestFloor}層`}　踏破 ${b.wins} / ${b.runs} 回`;
     txt(this, W / 2, 1140, best, 22, C.sub, { fontStyle: '500' });
-    txt(this, W / 2, H - 40, 'v0.1.1 プロトタイプ', 18, C.dim, { fontStyle: '500' });
+    txt(this, W / 2, H - 40, 'v0.1.2 プロトタイプ', 18, C.dim, { fontStyle: '500' });
   }
 
   private start(): void {

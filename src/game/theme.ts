@@ -106,7 +106,8 @@ export function button(
   };
   applyText();
   cont.setSize(w, h);
-  cont.setInteractive(new Phaser.Geom.Rectangle(-w / 2, -h / 2, w, h + 6), Phaser.Geom.Rectangle.Contains);
+  // コンテナの当たり判定は左上(0,0)基準のローカル座標で計算される
+  cont.setInteractive(new Phaser.Geom.Rectangle(0, 0, w, h + 6), Phaser.Geom.Rectangle.Contains);
   if (cont.input) cont.input.cursor = 'pointer';
   cont.on('pointerdown', () => {
     if (disabled) return;

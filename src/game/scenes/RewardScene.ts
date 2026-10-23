@@ -70,7 +70,8 @@ export class RewardScene extends Phaser.Scene {
       }).setOrigin(0, 0.5),
     );
     cont.setSize(w, h);
-    cont.setInteractive(new Phaser.Geom.Rectangle(-w / 2, -h / 2, w, h), Phaser.Geom.Rectangle.Contains);
+    // コンテナの当たり判定は左上(0,0)基準のローカル座標で計算される
+    cont.setInteractive(new Phaser.Geom.Rectangle(0, 0, w, h), Phaser.Geom.Rectangle.Contains);
     if (cont.input) cont.input.cursor = 'pointer';
     cont.on('pointerover', () => draw(true));
     cont.on('pointerout', () => draw(false));
